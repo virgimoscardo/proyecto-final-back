@@ -13,9 +13,15 @@ class FormularioApiController extends Controller
     public function storeApiMensaje(){
         $validator = Validator::make(request()->all(),[
             'name' => 'required | min:3',
-            'email' => 'required',
+            'email' => 'required ',
             'phone' => 'required',
             'message' => 'required'
+        ],[
+            'name.required' => 'Debe ingresar un nombre',
+            'name.min' =>'El nombre debe tener como mínimo 3 caracteres',
+            'email.required' =>'Debe ingresar un email',
+            'phone.required' =>'Debe ingresar un número de teléfono',
+            'message.required' =>'Debe ingresar un mensaje'
         ]);
 
         if ($validator -> fails()){
@@ -39,10 +45,10 @@ class FormularioApiController extends Controller
         return response ([
             "meta" =>[
                 "mensaje" => "Su mensaje fue enviado, nos comunicaremos con usted",
-                "codigo" => 201
+                "codigo" => 200
             ],
             'data' => $mensaje
-        ], 201);
+        ], 200);
 
     }
 }

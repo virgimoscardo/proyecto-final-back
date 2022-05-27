@@ -8,3 +8,5 @@ use App\Http\Controllers\FormularioApiController;
 
 
 Route::post('/contacto', [FormularioApiController::class, 'storeApiMensaje'])->name('api.mensaje.store');
+
+
